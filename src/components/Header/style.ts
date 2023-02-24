@@ -14,8 +14,14 @@ export const HeaderContainer = styled.header`
   flex-wrap: wrap;
 
   gap:1rem;
-  
+ 
   position: sticky;
   top: 0;
   left: 0;
+
+  @media screen and (max-width: 400px){
+    justify-content: center;
+    gap:2rem;
+    position: relative;
+  }
 `;
