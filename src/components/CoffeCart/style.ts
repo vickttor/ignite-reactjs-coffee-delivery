@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 export const CoffeCartContainer = styled.div`
   display: flex;
@@ -31,7 +32,7 @@ export const Address = styled.div`
   ${({theme}) => ({...theme.SdTextRegularS, lineHeight: `${theme.SdTextRegularS.lineHeight}px`})};
 `;
 
-export const Cart = styled.button`
+export const Cart = styled(motion.button)`
   border-radius: 6px;
   padding: 0.5rem;
   background: ${({theme})=>theme.SdBrandYellowLight};
