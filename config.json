@@ -1,0 +1,14 @@
+{
+  "source": ["./design.tokens.json"],
+  "platforms": {
+    "ts": {
+      "transformGroup": "js",
+      "prefix": "sd",
+      "buildPath": "src/styles/tokens/",
+      "files": [{
+        "format": "javascript/es6",
+        "destination": "variables.ts"
+      }]
+    }
+  }
+}
