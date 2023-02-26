@@ -5,7 +5,7 @@ export const LayoutContainer = styled.div`
   padding: 0 24rem;
 
   @media screen and (max-width:1920px){
-    padding: 0 18rem;
+    padding: 0 15rem;
   }
 
   @media screen and (max-width:1600px){

@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const HomeIntroContainer = styled.div`
+export const HomeContainer = styled.main`
+  margin-bottom: 9.8125rem;
+`;
+
+export const HomeIntroContainer = styled.section`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -14,7 +18,6 @@ export const HomeIntroContainer = styled.div`
     margin: 0 auto;
   }
 
-
   @media screen and (max-width: 1200px){
     flex-direction: column-reverse;
     align-items: center;
@@ -26,7 +29,7 @@ export const HomeIntroContainer = styled.div`
   }
 `;
 
-export const HomeIntroDescription = styled.div`
+export const HomeIntroDescription = styled.section`
   flex:2;
 
   h1 {
@@ -73,5 +76,28 @@ export const HomeIntroDescription = styled.div`
   }
 `;
 
+export const HomeCoffeListContainer = styled.div`
+  width: 100%;
+  height: auto;
 
+  h2 {
+    ${({theme})=> ({...theme.SdTitleTitleL, lineHeight: `${theme.SdTitleTitleL.lineHeight}px`})};
+    color: ${({theme})=> theme.SdBaseSubtitle};
+    margin-bottom: 2.125rem;
+  }
+`;
 
+export const HomeCoffeList = styled.ul`
+  width: 100%;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+
+  li {
+    list-style: none;
+  }
+
+`;

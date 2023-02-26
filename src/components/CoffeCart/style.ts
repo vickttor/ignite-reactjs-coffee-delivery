@@ -39,6 +39,5 @@ export const Cart = styled(motion.button)`
 
   svg {
     color: ${({theme})=>theme.SdBrandYellowDark};
-
   }
 `;

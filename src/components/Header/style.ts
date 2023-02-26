@@ -18,6 +18,7 @@ export const HeaderContainer = styled.header`
   position: sticky;
   top: 0;
   left: 0;
+  z-index: 99;
 
   @media screen and (max-width: 400px){
     justify-content: center;
