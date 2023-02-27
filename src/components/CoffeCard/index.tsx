@@ -3,6 +3,7 @@ import { useState } from "react";
 import { ICoffeeProduct } from "../../@types/Product";
 import { Badge } from "../Badge";
 import { AddToCartContainer, Cart, CoffeCardBadgesContainer, CoffeCardBuyContainer, CoffeCardContainer, DecreaseButton, IncreaseButton, InputContainer } from "./style";
+import { motion } from "framer-motion";
 
 interface ICoffeCardProps {
   product: ICoffeeProduct
@@ -23,7 +24,9 @@ export function CoffeCard({product}: ICoffeCardProps){
 
 	return (
 		<CoffeCardContainer>
-			<img src={product.imgSrc} alt={product.title} />
+			<motion.img src={product.imgSrc} alt={product.title} whileHover={{
+				scale: 1.1
+			}}/>
 			<CoffeCardBadgesContainer>
 				{product.badges.map((label)=> {
 					return <Badge key={label} label={label} />;

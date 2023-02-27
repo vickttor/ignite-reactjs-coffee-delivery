@@ -61,9 +61,10 @@ export const CoffeCardBuyContainer = styled.div`
     flex: 1;
     ${({theme})=>({...theme.SdTextRegularS, lineHeight: `${theme.SdTextRegularS.lineHeight}px`})};
     color: ${({theme})=>theme.SdBaseText};
-
+    
     span {
       ${({theme})=>({...theme.SdTitleTitleM, lineHeight: `${theme.SdTitleTitleM.lineHeight}px`})};
+      font-family: "Baloo 2";
     }
   }
 
@@ -75,8 +76,6 @@ export const AddToCartContainer = styled.div`
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-
- 
 
 `;
 
@@ -112,11 +111,10 @@ export const InputContainer = styled.div`
 const BaseButton = styled(motion.button)`
   background: transparent;
   border: none;
-  outline: none;
-  box-shadow: none;
-  border-radius: 6px;
+  border-radius: 3px;
 
-  height: 100%;
+  height: 60%;
+  line-height: 0;
 
   cursor:pointer;
   color: ${({theme})=>theme.SdBrandPurpleDark};
@@ -138,7 +136,6 @@ export const IncreaseButton = styled(BaseButton)`
   transform: translateY(-50%);
   right: 3px;
 `;
-
 
 export const Cart = styled(motion.button)`
   border-radius: 6px;

@@ -9,7 +9,7 @@ export const HomeIntroContainer = styled.section`
   align-items: center;
   justify-content: space-between;
   gap: 3.5rem;
-  margin: 5.875rem 0 ;
+  margin: 5.875rem 0;
 
   img {
     flex: 1;
