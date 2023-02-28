@@ -11,6 +11,11 @@ export const HomeIntroContainer = styled.section`
   gap: 3.5rem;
   margin: 5.875rem 0;
 
+  background-image: url("/src/assets/home-intro-background.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+
   img {
     flex: 1;
     width: 100%;
