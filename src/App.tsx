@@ -6,11 +6,13 @@ import { GlobalStyle } from "./styles/global";
 import {
 	QueryClient,
 	QueryClientProvider,
-} from "react-query";
+} from "@tanstack/react-query";
 
 import "react-toastify/dist/ReactToastify.css";
 
 import * as tokens from "./styles/tokens/variables";
+
+import "./lib/config/zod";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +39,7 @@ export function App() {
 				draggable
 				pauseOnHover
 				theme="colored"
+				limit={3}
 			/>
 		</ThemeProvider>
 	);

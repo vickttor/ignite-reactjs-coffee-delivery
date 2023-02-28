@@ -22,6 +22,12 @@ export const HeaderContainer = styled.header`
   left: 0;
   z-index: 99;
 
+  a {
+    padding: 0.25rem;
+    border-radius: 6px;
+    line-height: 0;
+  }
+
   @media screen and (max-width:1920px){
     padding: 2rem 15rem;
   }

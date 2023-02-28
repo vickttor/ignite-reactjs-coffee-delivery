@@ -1,7 +1,7 @@
 import { HomeCoffeList, HomeCoffeListContainer, HomeIntroContainer, HomeIntroDescription, HomeContainer } from "./style";
 import { ShoppingCart, Package, Timer, Coffee } from "phosphor-react";
 import { BadgeIconContainer } from "../../components/BadgeIcon";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 
 import * as tokens from "../../styles/tokens/variables";
 
@@ -21,13 +21,12 @@ interface ApiResponse  {
 	products: ICoffeeProduct[]
 }
 
-
 export function Home(){
 
-	const { data, isLoading, isError, } = useQuery<ApiResponse>("coffees", fetchProducts);
+	const { data, isLoading, isError, } = useQuery<ApiResponse>(["coffees"], fetchProducts);
 
 	useEffect(()=> {
-		if(isError)toast.error("Falha na requisição");
+		if(isError) toast.error("Falha na requisição");
 	}, [isError]);
 
 	return(

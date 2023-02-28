@@ -37,7 +37,7 @@ export const Address = styled.div`
 
 export const Cart = styled(motion(Link))`
   border-radius: 6px;
-  padding: 0.5rem;
+  padding: 0.5rem !important;
   background: ${({theme})=>theme.SdBrandYellowLight};
   text-decoration: none;
   cursor: pointer;

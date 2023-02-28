@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const LayoutContainer = styled.div`
   width: 100%;
   padding: 0 24rem;
-  margin-top: 12rem;
 
   @media screen and (max-width:1920px){
     padding: 0 15rem;
