@@ -2,15 +2,15 @@ import { HomeCoffeList, HomeCoffeListContainer, HomeIntroContainer, HomeIntroDes
 import { ShoppingCart, Package, Timer, Coffee } from "phosphor-react";
 import { BadgeIconContainer } from "../../components/BadgeIcon";
 import { useQuery } from "@tanstack/react-query";
+import { useEffect } from "react";
+import { toast } from "react-toastify";
+import { ICoffeeProduct } from "../../@types/Product";
+import { CoffeCard } from "../../components/CoffeCard";
 
 import * as tokens from "../../styles/tokens/variables";
 
 import coffeIntroImg from "../../assets/coffee-intro.svg";
 import axios from "axios";
-import { useEffect } from "react";
-import { toast } from "react-toastify";
-import { ICoffeeProduct } from "../../@types/Product";
-import { CoffeCard } from "../../components/CoffeCard";
 
 const fetchProducts = async () => {
 	const response = await axios.get("/coffees.json");
@@ -87,10 +87,7 @@ export function Home(){
 						})}
 					</HomeCoffeList> 
 				}
-
-			
 			</HomeCoffeListContainer>
-			
 		</HomeContainer>
 	);
 }
