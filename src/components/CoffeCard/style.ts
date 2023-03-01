@@ -117,12 +117,18 @@ const BaseButton = styled(motion.button)`
   line-height: 0;
 
   cursor:pointer;
-  color: ${({theme})=>theme.SdBrandPurpleDark};
+  color: ${({theme})=>theme.SdBrandPurple};
 
+  &:hover {
+    color: ${({theme})=>theme.SdBrandPurpleDark};
+  }
+
+  font-weight: bold;
   position: absolute;
 
   padding: 0.25rem;
   font-size: 1.1rem;
+  box-shadow: none;
 `;
 
 export const DecreaseButton = styled(BaseButton)`

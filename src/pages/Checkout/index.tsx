@@ -1,4 +1,5 @@
-import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money } from "phosphor-react";
+import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money, Trash } from "phosphor-react";
+import { Minus, Plus } from "phosphor-react";
 import { 
 	FormPartsTitle, 
 	AddressInputs, 
@@ -9,12 +10,22 @@ import {
 	UserInformationContainer,
 	PaymentContainer,
 	SelectPaymentContainer,
-	ConfirmProductSummary
+	ConfirmProductSummary,
+	ProductItemContainer,
+	ProductActionContainer,
+	DecreaseButton,
+	IncreaseButton,
+	ProductItemAmountInputContainer,
+	ConfirmProductSummaryOverflow,
+	PricesSummary,
+	TotalPrice,
+	PricessSumaryContainer,
+	ConfirmOrder
 } from "./style";
 import {z} from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 import * as tokens from "../../styles/tokens/variables";
@@ -51,6 +62,16 @@ export function Checkout(){
 		console.log(data);
 	};
 
+	const [itemAmount, setItemAmount] = useState(0);
+
+	const handleIncreaseItemAmount = () => {
+		setItemAmount((amount)=> amount + 1);
+	};
+
+	const handleDecreaseItemAmount = () => {
+		if(itemAmount > 0) setItemAmount((amount)=> amount - 1);
+	};
+	
 	return(
 		<CheckoutContainer onSubmit={handleSubmit(handleAddressSubmit)}>
 			<UserInformationContainer>
@@ -123,9 +144,59 @@ export function Checkout(){
 				<h2>Café selecionados</h2>
 
 				<ConfirmProductSummary>
-					Teste
-				</ConfirmProductSummary>
+					<ConfirmProductSummaryOverflow>
+						{[...Array(5)].map((_, index)=>{
+							return (
+								<ProductItemContainer key={index}>
+									<img src="/assets/coffee-arabian.svg" alt="Coffee" />
+									<div>
+										<div>
+											<p>Expresso Tradicional</p>
+											<span>{new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(9.90)}</span>
+										</div>
+										<ProductActionContainer>
+											<ProductItemAmountInputContainer>
+												<DecreaseButton type="button" onClick={handleDecreaseItemAmount}>
+													<Minus size={14} weight="bold"/>
+												</DecreaseButton>
+												<input type="number" min={0} step={1} max={100} value={itemAmount} onChange={(event)=>setItemAmount(Number(event.target.value))}/>
+												<IncreaseButton type="button" onClick={handleIncreaseItemAmount}>
+													<Plus size={14} weight="bold"/>
+												</IncreaseButton>
+											</ProductItemAmountInputContainer>
+		
+											<button className="removeItem" type="button">
+												<Trash size={16} />
+											Remover
+											</button>
+										</ProductActionContainer>
+									</div>
+								</ProductItemContainer>
+							);
+						})}
+					</ConfirmProductSummaryOverflow>
 
+					<PricessSumaryContainer>
+						<PricesSummary>
+							<p>Total de itens</p>
+							<p>{new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(29.7)}</p>
+						</PricesSummary>
+						
+						<PricesSummary>
+							<p>Entrega</p>
+							<p>{new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(3.5)}</p>
+						</PricesSummary>
+						
+						<TotalPrice>
+							<p>Total</p>
+							<p>{new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(33.2)}</p>
+						</TotalPrice>
+					</PricessSumaryContainer>
+
+					<ConfirmOrder type="submit" whileTap={{scale:0.95}}>
+						Confirmar Pedido
+					</ConfirmOrder>
+				</ConfirmProductSummary>
 			</ProductsSummaryContainer>
 		</CheckoutContainer>
 	);

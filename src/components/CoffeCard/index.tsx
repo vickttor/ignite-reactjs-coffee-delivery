@@ -1,4 +1,4 @@
-import { ShoppingCart } from "phosphor-react";
+import { Minus, Plus, ShoppingCart } from "phosphor-react";
 import { useState } from "react";
 import { ICoffeeProduct } from "../../@types/Product";
 import { Badge } from "../Badge";
@@ -48,9 +48,13 @@ export function CoffeCard({product}: ICoffeCardProps){
 
 				<AddToCartContainer>
 					<InputContainer>
-						<DecreaseButton type="button" onClick={handleDecreaseItemAmount}>-</DecreaseButton>
+						<DecreaseButton type="button" onClick={handleDecreaseItemAmount}>
+							<Minus size={14} weight="bold"/>
+						</DecreaseButton>
 						<input type="number" min={0} step={1} max={100} value={itemAmount} onChange={(event)=>setItemAmount(Number(event.target.value))}/>
-						<IncreaseButton type="button" onClick={handleIncreaseItemAmount}>+</IncreaseButton>
+						<IncreaseButton type="button" onClick={handleIncreaseItemAmount}>
+							<Plus size={14} weight="bold"/>
+						</IncreaseButton>
 					</InputContainer>
 
 					<Cart 
