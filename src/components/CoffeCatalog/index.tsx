@@ -59,8 +59,7 @@ export function CoffeCatalog({product}: ICoffeCardProps){
 
 					<Cart 
 						onClick={()=>{console.log("Shop Cart");}}
-						whileHover={{scale:1.1}} 
-						whileTap={{scale:1}}
+						whileTap={{scale:0.85}}
 					>
 						<ShoppingCart size={22} weight="fill"/>
 					</Cart>

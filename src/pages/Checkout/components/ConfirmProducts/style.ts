@@ -64,6 +64,12 @@ export const TotalPrice = styled(PricesSummary)`
 export const ConfirmOrder = styled(motion.button)`
   ${({theme})=>({...theme.SdComponentsButtonG, lineHeight: `${theme.SdComponentsButtonG.lineHeight}px`})};
   background: ${({theme})=> theme.SdBrandYellow};
+  transition: background 0.2s ease;
+
+  &:hover {
+    background: ${({theme})=> theme.SdBrandYellowDark};
+  }
+
   color: #FFF;
   width: 100%;
   border-radius: 6px;

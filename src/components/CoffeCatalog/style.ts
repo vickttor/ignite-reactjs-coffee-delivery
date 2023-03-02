@@ -147,6 +147,11 @@ export const Cart = styled(motion.button)`
   border-radius: 6px;
   padding: 0.5rem;
   background: ${({theme})=>theme.SdBrandPurpleDark};
+  transition: background 0.2s ease;
+
+  &:hover {
+    background: ${({theme})=>theme.SdBrandPurple};
+  }
 
   svg {
     color: ${({theme})=>theme.SdBaseCard};

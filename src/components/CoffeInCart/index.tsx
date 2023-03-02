@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Minus, Plus, Trash } from "phosphor-react";
 import { ICoffeeProduct } from "../../@types/Product";
 import { 
+	ButtonRemoveProductFromCart,
 	CoffeInCartContainer, 
 	DecreaseButton, 
 	HandleCoffeInCartContainer,
@@ -44,10 +45,10 @@ export function CoffeInCart(props: ICoffeInCart) {
 						</IncreaseButton>
 					</InputContainer>
 
-					<button className="removeItem" type="button">
+					<ButtonRemoveProductFromCart type="button" whileTap={{scale:0.95}}>
 						<Trash size={16} />
-              Remover
-					</button>
+            Remover
+					</ButtonRemoveProductFromCart>
 				</HandleCoffeInCartContainer>
 			</div>
 		</CoffeInCartContainer>

@@ -70,23 +70,31 @@ export const HandleCoffeInCartContainer = styled.div`
   flex-direction: row ;
   gap: 0.5rem;
 
-  button.removeItem {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: .25rem;
+`;
 
-    ${({theme})=>({...theme.SdComponentsButtonS, lineHeight: `${theme.SdComponentsButtonS.lineHeight}px`})};
-    text-transform: uppercase;
-    color: ${({theme})=>theme.SdBaseText};
-    background-color: ${({theme})=>theme.SdBaseButton};
-    border-radius: 6px;
-    padding: .5rem;
+export const ButtonRemoveProductFromCart = styled(motion.button)`
 
-    svg {
-      color: ${({theme})=>theme.SdBrandPurple};
-    }
-  } 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .25rem;
+
+  ${({theme})=>({...theme.SdComponentsButtonS, lineHeight: `${theme.SdComponentsButtonS.lineHeight}px`})};
+  text-transform: uppercase;
+  color: ${({theme})=>theme.SdBaseText};
+  background-color: ${({theme})=>theme.SdBaseButton};
+  border-radius: 6px;
+  padding: .5rem;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background-color: ${({theme})=>theme.SdBaseHover};
+  }
+
+  svg {
+    color: ${({theme})=>theme.SdBrandPurple};
+  }
+  
 `;
 
 export const InputContainer = styled.div`

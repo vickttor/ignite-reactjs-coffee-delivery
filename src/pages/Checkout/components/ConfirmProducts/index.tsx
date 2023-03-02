@@ -43,7 +43,7 @@ export function ConfirmProducts(props: IConfirmProductsProps) {
 			</PricessSumaryContainer>
 
 			<ConfirmOrder type="submit" whileTap={{scale:0.95}}>
-						Confirmar Pedido
+				Confirmar Pedido
 			</ConfirmOrder>
 		</ConfirmProductContainer>
 	);
