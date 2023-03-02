@@ -1,7 +1,7 @@
 import { Minus, Plus, ShoppingCart } from "phosphor-react";
 import { useState } from "react";
 import { ICoffeeProduct } from "../../@types/Product";
-import { Badge } from "../Badge";
+import { BadgeCatalog } from "../BadgeCatalog";
 import { AddToCartContainer, Cart, CoffeCardBadgesContainer, CoffeCardBuyContainer, CoffeCardContainer, DecreaseButton, IncreaseButton, InputContainer } from "./style";
 import { motion } from "framer-motion";
 
@@ -9,7 +9,7 @@ interface ICoffeCardProps {
   product: ICoffeeProduct
 }
 
-export function CoffeCard({product}: ICoffeCardProps){
+export function CoffeCatalog({product}: ICoffeCardProps){
 	
 	const [itemAmount, setItemAmount] = useState(0);
 
@@ -29,7 +29,7 @@ export function CoffeCard({product}: ICoffeCardProps){
 			}}/>
 			<CoffeCardBadgesContainer>
 				{product.badges.map((label)=> {
-					return <Badge key={label} label={label} />;
+					return <BadgeCatalog key={label} label={label} />;
 				})}
 			</CoffeCardBadgesContainer>
 

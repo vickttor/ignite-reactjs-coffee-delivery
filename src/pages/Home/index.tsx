@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
 import { ICoffeeProduct } from "../../@types/Product";
-import { CoffeCard } from "../../components/CoffeCard";
+import { CoffeCatalog } from "../../components/CoffeCatalog";
 
 import * as tokens from "../../styles/tokens/variables";
 
@@ -81,7 +81,7 @@ export function Home(){
 						{data?.products.map((product)=> {
 							return (
 								<li key={product.id}>
-									<CoffeCard product={product}/>
+									<CoffeCatalog product={product}/>
 								</li>
 							);
 						})}

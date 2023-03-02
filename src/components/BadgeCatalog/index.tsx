@@ -4,7 +4,7 @@ interface IBadgeProps {
   label: string;
 }
 
-export function Badge(props: IBadgeProps) {
+export function BadgeCatalog(props: IBadgeProps) {
 	return (
 		<BadgeContainer>
 			{props.label}

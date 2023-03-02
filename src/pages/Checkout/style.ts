@@ -79,11 +79,17 @@ export const SelectPaymentContainer = styled.div`
     border-radius: 6px;
     padding: 1rem;
     background: ${({theme})=>theme.SdBaseButton};
-
+    transition: background 0.2s ease;
     cursor: pointer;
+
     ${({theme})=>({...theme.SdComponentsButtonS, lineHeight: `${theme.SdComponentsButtonS.lineHeight}px`})}
+    
     text-transform: uppercase;
     color: ${({theme})=>theme.SdBaseText};
+
+    &:hover {
+      background: ${({theme})=>theme.SdBaseHover};
+    }
 
     border: 1px solid transparent;
   }
