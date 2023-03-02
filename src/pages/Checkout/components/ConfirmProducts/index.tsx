@@ -1,5 +1,7 @@
+import { useContext } from "react";
 import { ICoffeeProduct } from "../../../../@types/Product";
 import { CoffeInCart } from "../../../../components/CoffeInCart";
+import { CartContext } from "../../../../context/Cart";
 import { FormatCurrecy } from "../../../../utils/formatMoney";
 import { 
 	ConfirmOrder, 
@@ -16,6 +18,8 @@ interface IConfirmProductsProps {
 
 export function ConfirmProducts(props: IConfirmProductsProps) {
 	
+	const { products, handleGetTotalPrice, freight} = useContext(CartContext);
+
 	return (
 		<ConfirmProductContainer>
 			<ProductsOverflow>
@@ -29,17 +33,17 @@ export function ConfirmProducts(props: IConfirmProductsProps) {
 			<PricessSumaryContainer>
 				<PricesSummary>
 					<p>Total de itens</p>
-					<p>{FormatCurrecy(29.7)}</p>
+					<p>{products.length}</p>
 				</PricesSummary>
 						
 				<PricesSummary>
 					<p>Entrega</p>
-					<p>{FormatCurrecy(3.30)}</p>
+					<p>{FormatCurrecy(freight)}</p>
 				</PricesSummary>
 						
 				<TotalPrice>
 					<p>Total</p>
-					<p>{FormatCurrecy(33.2)}</p>
+					<p>{FormatCurrecy(handleGetTotalPrice())}</p>
 				</TotalPrice>
 			</PricessSumaryContainer>
 

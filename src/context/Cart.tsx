@@ -9,7 +9,8 @@ interface ICartContext {
 	handleAddProductToCart: (product: ICoffeeProduct) => void;
 	handleRemoveProductToCart: (productID: string) => void;
 	handleChangeProductItemAmount: (productID: string, number: number) => void;
-	handleGetProductFromCart: (productID: string) => ICoffeeProduct | undefined;
+	handleGetTotalPrice: () => number;
+	freight: number;
 }
 
 export const CartContext = createContext({} as ICartContext);
@@ -29,11 +30,9 @@ export function CartContextProvider({ children }: ICartContextProviderProps) {
     }
 	);
 
-	const { products } = cartState;
+	const freight = 3.30;
 
-	useEffect(()=> {
-		console.log(products);
-	}, [products]);
+	const { products } = cartState;
 
 	useEffect(() => {
 		const stateJSON = JSON.stringify(cartState);
@@ -45,8 +44,8 @@ export function CartContextProvider({ children }: ICartContextProviderProps) {
 		dispatch(addNewProductToCart(product));
 	}
 
-	function handleGetProductFromCart(productID: string) {
-		return products.find((product)=>product.id === productID);
+	function handleGetTotalPrice() {
+		return products.reduce((acc, att) => acc + (att.price * att.amount) + freight, 0);
 	}
 	
 	function handleRemoveProductToCart(productID: string) {
@@ -67,7 +66,8 @@ export function CartContextProvider({ children }: ICartContextProviderProps) {
 				handleAddProductToCart,
 				handleRemoveProductToCart,
 				handleChangeProductItemAmount,
-				handleGetProductFromCart
+				handleGetTotalPrice,
+				freight
 			}}
 		>
 			{children}

@@ -10,6 +10,7 @@ export interface IProductsInCart {
 
 export const CartReducer: Reducer<IProductsInCart, any> = (state, action) => {
 	switch (action.type) {
+	
 	case CartActionTypes.ADD_PRODUCT_TO_CART: {
 		const product = action.payload.product;
 
@@ -27,12 +28,22 @@ export const CartReducer: Reducer<IProductsInCart, any> = (state, action) => {
 			draft.products[existingProductIndex].amount += productAmount;
 		});
 	}
+
 	case CartActionTypes.REMOVE_PRODUCT_TO_CART: {
-		return state;
+		return produce(state, (draft)=> {
+			draft.products = draft.products.filter((product)=>product.id !== action.payload.productID);
+		});
 	}
+
 	case CartActionTypes.CHANGE_PRODUCT_ITEM_AMOUNT: {
-		return state;
+
+		const existingProductIndex = state.products.findIndex((product)=>product.id === action.payload.productID)!;
+
+		return produce(state, (draft)=> {
+			draft.products[existingProductIndex].amount = action.payload.amount;
+		});
 	}
+
 	default:
 		return state;
 	}
