@@ -1,7 +1,7 @@
 import { MapPin, ShoppingCart } from "phosphor-react";
-import { Address, Cart, CoffeCartContainer } from "./style";
+import { Address, CartContainer, CoffeCartContainer } from "./style";
 
-export function CoffeeCart() {
+export function Cart() {
 
 	const itemAmount = 0;
 
@@ -12,14 +12,14 @@ export function CoffeeCart() {
 				<span>Porto Alegre, RS</span>
 			</Address>
 
-			<Cart 
+			<CartContainer 
 				to="/checkout"
 				whileHover={{scale:1.1}} 
 				whileTap={{scale:1}}
 			>
 				{itemAmount > 0 && <span>{itemAmount}</span>}
 				<ShoppingCart size={22} weight="fill"/>
-			</Cart>
+			</CartContainer>
 		</CoffeCartContainer>
 	);
 }

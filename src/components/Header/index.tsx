@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { CoffeeCart } from "../CoffeCart";
+import { Cart } from "../Cart";
 import { HeaderContainer } from "./style";
 
 export function Header() {
@@ -8,7 +8,7 @@ export function Header() {
 			<Link to="/">
 				<img src="/assets/logo.svg" alt="Coffe Delivery Logo - Purple Cappucino Cup with a Rocket draw in the center" />
 			</Link>
-			<CoffeeCart/>
+			<Cart/>
 		</HeaderContainer>
 	);
 }

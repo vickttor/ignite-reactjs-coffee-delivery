@@ -35,7 +35,7 @@ export const Address = styled.div`
   ${({theme}) => ({...theme.SdTextRegularS, lineHeight: `${theme.SdTextRegularS.lineHeight}px`})};
 `;
 
-export const Cart = styled(motion(Link))`
+export const CartContainer = styled(motion(Link))`
   border-radius: 6px;
   padding: 0.5rem !important;
   background: ${({theme})=>theme.SdBrandYellowLight};

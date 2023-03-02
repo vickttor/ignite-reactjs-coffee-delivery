@@ -39,7 +39,7 @@ export function App() {
 				draggable
 				pauseOnHover
 				theme="colored"
-				limit={3}
+				limit={1}
 			/>
 		</ThemeProvider>
 	);
