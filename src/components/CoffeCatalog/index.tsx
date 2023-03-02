@@ -1,17 +1,21 @@
 import { Minus, Plus, ShoppingCart } from "phosphor-react";
-import { useState } from "react";
-import { ICoffeeProduct } from "../../@types/Product";
+import { useContext, useState } from "react";
+import { ICoffeesFromApi } from "../../@types/Product";
 import { BadgeCatalog } from "../BadgeCatalog";
 import { AddToCartContainer, Cart, CoffeCardBadgesContainer, CoffeCardBuyContainer, CoffeCardContainer, DecreaseButton, IncreaseButton, InputContainer } from "./style";
 import { motion } from "framer-motion";
+import { CartContext } from "../../context/Cart";
+import { FormatCurrecy } from "../../utils/formatMoney";
 
 interface ICoffeCardProps {
-  product: ICoffeeProduct
+  product: ICoffeesFromApi
 }
 
 export function CoffeCatalog({product}: ICoffeCardProps){
 	
-	const [itemAmount, setItemAmount] = useState(0);
+	const [itemAmount, setItemAmount] = useState(1);
+
+	const { handleAddProductToCart } = useContext(CartContext);
 
 	const handleIncreaseItemAmount = () => {
 		setItemAmount((amount)=> amount + 1);
@@ -20,7 +24,15 @@ export function CoffeCatalog({product}: ICoffeCardProps){
 	const handleDecreaseItemAmount = () => {
 		if(itemAmount > 0) setItemAmount((amount)=> amount - 1);
 	};
-	
+
+	const sendProductToCart = () => {
+		const payload = {
+			...product, 
+			amount: itemAmount
+		};
+
+		handleAddProductToCart(payload);
+	};
 
 	return (
 		<CoffeCardContainer>
@@ -42,7 +54,7 @@ export function CoffeCatalog({product}: ICoffeCardProps){
 				<span>
 					R$ 
 					<span>	
-						{new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(product.price).replace("R$", "")}
+						{FormatCurrecy(product.price).replace("R$", "")}
 					</span>
 				</span>
 
@@ -58,7 +70,7 @@ export function CoffeCatalog({product}: ICoffeCardProps){
 					</InputContainer>
 
 					<Cart 
-						onClick={()=>{console.log("Shop Cart");}}
+						onClick={sendProductToCart}
 						whileTap={{scale:0.85}}
 					>
 						<ShoppingCart size={22} weight="fill"/>

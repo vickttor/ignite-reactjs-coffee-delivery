@@ -4,7 +4,7 @@ import { BadgeIconContainer } from "../../components/BadgeIcon";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
-import { ICoffeeProduct } from "../../@types/Product";
+import { ICoffeeProduct, ICoffeesFromApi } from "../../@types/Product";
 import { CoffeCatalog } from "../../components/CoffeCatalog";
 
 import * as tokens from "../../styles/tokens/variables";
@@ -18,7 +18,7 @@ const fetchProducts = async () => {
 };
 
 interface ApiResponse  {
-	products: ICoffeeProduct[]
+	products: ICoffeesFromApi[]
 }
 
 export function Home(){

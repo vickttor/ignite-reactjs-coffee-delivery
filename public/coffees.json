@@ -1,7 +1,7 @@
 {
   "products": [
     {
-      "id": "1",
+      "id": "adac2a2b-d394-4cae-be51-307252619059",
       "imgSrc": "/assets/coffee-espresso.svg",
       "badges": ["tradicional"],
       "title": "Expresso tradicional",
@@ -9,7 +9,7 @@
       "price": 9.90
     },
     {
-      "id": "2",
+      "id": "1982b2a2-96d2-4a0b-aca2-d7663f15bf01",
       "imgSrc": "/assets/coffee-american.svg",
       "badges": ["tradicional"],
       "title": "Expresso Americano",
@@ -17,7 +17,7 @@
       "price": 9.90
     },
     {
-      "id": "3",
+      "id": "3e395d96-7170-4928-bf02-bd7bb5831811",
       "imgSrc": "/assets/coffee-creamy-espresso.svg",
       "badges": ["tradicional"],
       "title": "Expresso Cremoso",
@@ -25,7 +25,7 @@
       "price": 9.90
     },
     {
-      "id": "4",
+      "id": "642e38a6-9a48-4e0c-86a9-3b7f093bc265",
       "imgSrc": "/assets/coffee-cold.svg",
       "badges": ["tradicional", "gelado"],
       "title": "Expresso Gelado",
@@ -33,7 +33,7 @@
       "price": 9.90
     },
     {
-      "id": "5",
+      "id": "552ca228-7b6d-4bf4-8031-837dafae110c",
       "imgSrc": "/assets/coffee-with-milk.svg",
       "badges": ["tradicional", "com leite"],
       "title": "Café com Leite",
@@ -41,7 +41,7 @@
       "price": 9.90
     },
     {
-      "id": "6",
+      "id": "ac99591f-dd47-41f4-951b-ed782341da40",
       "imgSrc": "/assets/coffee-latte.svg",
       "badges": ["tradicional", "com leite"],
       "title": "Latte",
@@ -49,7 +49,7 @@
       "price": 9.90
     },
     {
-      "id": "7",
+      "id": "1572f333-cea1-4555-91a1-e0bc5aef0d2d",
       "imgSrc": "/assets/coffee-capuccino.svg",
       "badges": ["tradicional", "com leite"],
       "title": "Cappucino",
@@ -57,7 +57,7 @@
       "price": 9.90
     },
     {
-      "id": "8",
+      "id": "1ef26d9b-25bb-44eb-bfe7-747741870acc",
       "imgSrc": "/assets/coffee-macchiato.svg",
       "badges": ["tradicional", "com leite"],
       "title": "Macchiato",
@@ -65,7 +65,7 @@
       "price": 9.90
     },
     {
-      "id": "9",
+      "id": "96ffc7b4-bd40-4e41-a077-bc7d768401dd",
       "imgSrc": "/assets/coffee-mocaccino.svg",
       "badges": ["tradicional", "com leite"],
       "title": "Mocaccino",
@@ -73,7 +73,7 @@
       "price": 9.90
     },
     {
-      "id": "10",
+      "id": "ee790a9a-e852-47b6-a8b0-4be2aa0f7206",
       "imgSrc": "/assets/coffee-hot-chocolate.svg",
       "badges": ["especial", "com leite"],
       "title": "Chocolate Quente",
@@ -81,7 +81,7 @@
       "price": 9.90
     },
     {
-      "id": "11",
+      "id": "783647bc-0e9c-4b86-bd4b-a91970a21646",
       "imgSrc": "/assets/coffee-cuban.svg",
       "badges": ["especial", "alcoólico", "gelado"],
       "title": "Cubano",
@@ -89,7 +89,7 @@
       "price": 9.90
     },
     {
-      "id": "12",
+      "id": "80dfd72f-770f-4cb8-8887-0a23360a3a50",
       "imgSrc": "/assets/coffee-hawaiian.svg",
       "badges": ["especial"],
       "title": "Havaiano",
@@ -97,7 +97,7 @@
       "price": 9.90
     },
     {
-      "id": "13",
+      "id": "3674d42f-f8f8-4cfa-8a23-6843e3064d47",
       "imgSrc": "/assets/coffee-arabian.svg",
       "badges": ["especial"],
       "title": "Árabe",
@@ -105,7 +105,7 @@
       "price": 9.90
     },
     {
-      "id": "14",
+      "id": "1d8f51fc-4082-42de-a030-7fc10d0ca942",
       "imgSrc": "/assets/coffee-irish.svg",
       "badges": ["especial", "alcoólico"],
       "title": "Irlândes",

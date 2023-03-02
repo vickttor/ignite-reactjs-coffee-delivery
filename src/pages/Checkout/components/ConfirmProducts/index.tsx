@@ -1,5 +1,6 @@
 import { ICoffeeProduct } from "../../../../@types/Product";
 import { CoffeInCart } from "../../../../components/CoffeInCart";
+import { FormatCurrecy } from "../../../../utils/formatMoney";
 import { 
 	ConfirmOrder, 
 	ConfirmProductContainer, 
@@ -14,7 +15,7 @@ interface IConfirmProductsProps {
 }
 
 export function ConfirmProducts(props: IConfirmProductsProps) {
-
+	
 	return (
 		<ConfirmProductContainer>
 			<ProductsOverflow>
@@ -28,17 +29,17 @@ export function ConfirmProducts(props: IConfirmProductsProps) {
 			<PricessSumaryContainer>
 				<PricesSummary>
 					<p>Total de itens</p>
-					<p>{new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(29.7)}</p>
+					<p>{FormatCurrecy(29.7)}</p>
 				</PricesSummary>
 						
 				<PricesSummary>
 					<p>Entrega</p>
-					<p>{new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(3.5)}</p>
+					<p>{FormatCurrecy(3.30)}</p>
 				</PricesSummary>
 						
 				<TotalPrice>
 					<p>Total</p>
-					<p>{new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(33.2)}</p>
+					<p>{FormatCurrecy(33.2)}</p>
 				</TotalPrice>
 			</PricessSumaryContainer>
 

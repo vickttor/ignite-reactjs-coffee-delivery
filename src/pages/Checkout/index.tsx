@@ -7,13 +7,14 @@ import {
 import {z} from "zod";
 import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { toast } from "react-toastify";
 
 import { UserAddress } from "./components/UserAddress";
 import { PaymentOptions } from "./components/PaymentOptions";
 import { ConfirmProducts } from "./components/ConfirmProducts";
 import { ICoffeeProduct } from "../../@types/Product";
+import { CartContext } from "../../context/Cart";
 
 const AddressSchema = z.object({
 	cep: z.string().min(8).max(8),
@@ -28,6 +29,8 @@ const AddressSchema = z.object({
 type AddressType = z.infer<typeof AddressSchema>;
 
 export function Checkout(){
+
+	const {products} = useContext(CartContext);
 
 	const CheckoutForm = useForm<AddressType>({
 		resolver: zodResolver(AddressSchema)
@@ -48,33 +51,6 @@ export function Checkout(){
 	const handleAddressSubmit = async (data: AddressType) => {
 		console.log(data);
 	};
-
-	const fakieProductsInCart: ICoffeeProduct[] = [
-		{
-			"id": "1",
-			"imgSrc": "/assets/coffee-espresso.svg",
-			"badges": ["tradicional"],
-			"title": "Expresso tradicional",
-			"description": "O tradicional café feito com água quente e grãos moídos",
-			"price": 9.90
-		},
-		{
-			"id": "2",
-			"imgSrc": "/assets/coffee-american.svg",
-			"badges": ["tradicional"],
-			"title": "Expresso Americano",
-			"description": "Expresso diluído, menos intenso que o tradicional",
-			"price": 9.90
-		},
-		{
-			"id": "3",
-			"imgSrc": "/assets/coffee-creamy-espresso.svg",
-			"badges": ["tradicional"],
-			"title": "Expresso Cremoso",
-			"description": "Café expresso tradicional com espuma cremosa",
-			"price": 9.90
-		},
-	];
 	
 	return(
 		<CheckoutContainer onSubmit={handleSubmit(handleAddressSubmit)}>
@@ -90,7 +66,7 @@ export function Checkout(){
 			<ProductsSummaryContainer>
 				<h2>Café selecionados</h2>
 
-				<ConfirmProducts products={fakieProductsInCart ?? []}/>
+				<ConfirmProducts products={products}/>
 			</ProductsSummaryContainer>
 		</CheckoutContainer>
 	);

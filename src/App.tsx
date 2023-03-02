@@ -1,6 +1,7 @@
 import { BrowserRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { ThemeProvider } from "styled-components";
+import { CartContextProvider } from "./context/Cart";
 import { Router } from "./Router";
 import { GlobalStyle } from "./styles/global";
 import {
@@ -23,9 +24,11 @@ export function App() {
 			<GlobalStyle/>
 
 			<BrowserRouter>
-				<QueryClientProvider client={queryClient}>
-					<Router/>
-				</QueryClientProvider>
+				<CartContextProvider>
+					<QueryClientProvider client={queryClient}>
+						<Router/>
+					</QueryClientProvider>
+				</CartContextProvider>
 			</BrowserRouter>
 			
 			<ToastContainer

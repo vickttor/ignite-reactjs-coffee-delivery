@@ -5,4 +5,7 @@ export interface ICoffeeProduct {
   title: string;
   description: string;
   price: number;
+  amount: number;
 }
+
+export type ICoffeesFromApi = Omit<ICoffeeProduct, "amount">

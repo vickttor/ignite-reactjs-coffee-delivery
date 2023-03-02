@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext } from "react";
 import { Minus, Plus, Trash } from "phosphor-react";
 import { ICoffeeProduct } from "../../@types/Product";
 import { 
@@ -9,43 +9,49 @@ import {
 	IncreaseButton, 
 	InputContainer,  
 } from "./style";
+import { FormatCurrecy } from "../../utils/formatMoney";
+import { CartContext } from "../../context/Cart";
 
 interface ICoffeInCart {
   product: ICoffeeProduct
 }
 
-export function CoffeInCart(props: ICoffeInCart) {
+export function CoffeInCart({product}: ICoffeInCart) {
 
-	const [itemAmount, setItemAmount] = useState(0);
-
-	const handleIncreaseItemAmount = () => {
-		setItemAmount((amount)=> amount + 1);
-	};
-
-	const handleDecreaseItemAmount = () => {
-		if(itemAmount > 0) setItemAmount((amount)=> amount - 1);
-	};
+	const { handleChangeProductItemAmount, handleRemoveProductToCart } = useContext(CartContext);
 
 	return (
 		<CoffeInCartContainer>
-			<img src={props.product.imgSrc} alt="Coffee" />
+			<img src={product.imgSrc} alt="Coffee" />
 			<div>
 				<div>
-					<p>{props.product.title}</p>
-					<span>{new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(props.product.price)}</span>
+					<p>{product.title}</p>
+					<span>{FormatCurrecy(product.price)}</span>
 				</div>
 				<HandleCoffeInCartContainer>
 					<InputContainer>
-						<DecreaseButton type="button" onClick={handleDecreaseItemAmount}>
+						<DecreaseButton type="button" onClick={()=>handleChangeProductItemAmount(product.id, product.amount - 1)}>
 							<Minus size={14} weight="bold"/>
 						</DecreaseButton>
-						<input type="number" min={0} step={1} max={100} value={itemAmount} onChange={(event)=>setItemAmount(Number(event.target.value))}/>
-						<IncreaseButton type="button" onClick={handleIncreaseItemAmount}>
+						<input 
+							type="number" 
+							min={0} 
+							step={1} 
+							max={100} 
+							value={product.amount} 
+							onChange={(event)=>handleChangeProductItemAmount(product.id, event.target.valueAsNumber)}/>
+						<IncreaseButton type="button" onClick={()=>handleChangeProductItemAmount(product.id, product.amount + 1)}>
 							<Plus size={14} weight="bold"/>
 						</IncreaseButton>
 					</InputContainer>
 
-					<ButtonRemoveProductFromCart type="button" whileTap={{scale:0.95}}>
+					<ButtonRemoveProductFromCart 
+						onClick={()=> {
+							handleRemoveProductToCart(product.id);
+						}}
+						type="button" 
+						whileTap={{scale:0.95}}
+					>
 						<Trash size={16} />
             Remover
 					</ButtonRemoveProductFromCart>
