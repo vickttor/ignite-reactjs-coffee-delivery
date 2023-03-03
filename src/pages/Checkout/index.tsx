@@ -13,7 +13,6 @@ import { toast } from "react-toastify";
 import { UserAddress } from "./components/UserAddress";
 import { PaymentOptions } from "./components/PaymentOptions";
 import { ConfirmProducts } from "./components/ConfirmProducts";
-import { ICoffeeProduct } from "../../@types/Product";
 import { CartContext } from "../../context/Cart";
 
 const AddressSchema = z.object({
@@ -26,13 +25,16 @@ const AddressSchema = z.object({
 	state: z.string().min(3).max(100)
 });
 
-type AddressType = z.infer<typeof AddressSchema>;
+export type AddressType = z.infer<typeof AddressSchema>;
 
 export function Checkout(){
 
 	const {products} = useContext(CartContext);
 
 	const CheckoutForm = useForm<AddressType>({
+		defaultValues: {
+			cep: "",
+		},
 		resolver: zodResolver(AddressSchema)
 	});
 
