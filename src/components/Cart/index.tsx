@@ -5,15 +5,17 @@ import { Address, CartContainer, CoffeCartContainer } from "./style";
 
 export function Cart() {
 
-	const {products} = useContext(CartContext);
+	const {products, userInformation} = useContext(CartContext);
 
 	const productsAmount = products.length;
+
+	const addressSummary = `${userInformation.city}, ${userInformation.state}`;
 
 	return (
 		<CoffeCartContainer>
 			<Address>
 				<MapPin size={22} weight="fill"/>
-				<span>Porto Alegre, RS</span>
+				<span>{addressSummary.length > 3 ? addressSummary : "Localidade"}</span>
 			</Address>
 
 			<CartContainer 

@@ -1,15 +1,18 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
-import { createContext, ReactNode, useEffect, useReducer } from "react";
+import { createContext, ReactNode, useEffect, useReducer, useState } from "react";
 import { ICoffeeProduct } from "../@types/Product";
+import { UserInformationType, Payment } from "../entities/userInformation/schema";
 import { addNewProductToCart, removeProductFromCart, changeProductAmount } from "../reducers/cart/actions";
 import { CartReducer, IProductsInCart } from "../reducers/cart/reducer";
 
 interface ICartContext {
   products: ICoffeeProduct[];
+	userInformation: UserInformationType;
 	handleAddProductToCart: (product: ICoffeeProduct) => void;
 	handleRemoveProductToCart: (productID: string) => void;
 	handleChangeProductItemAmount: (productID: string, number: number) => void;
 	handleGetTotalPrice: () => number;
+	handleSetUserInformation: (newUserData: UserInformationType) => void;
 	freight: number;
 }
 
@@ -29,6 +32,17 @@ export function CartContextProvider({ children }: ICartContextProviderProps) {
     	return initialState;
     }
 	);
+
+	const [userInformation, setUserInformation] = useState({
+		cep: "",
+		city: "", 
+		complement: "", 
+		district: "", 
+		number: 0, 
+		state: "", 
+		street: "",
+		payment: Payment.CREDIT
+	} as UserInformationType);
 
 	const freight = 3.30;
 
@@ -58,16 +72,22 @@ export function CartContextProvider({ children }: ICartContextProviderProps) {
 		}
 	}
 
+	function handleSetUserInformation(newUserData: UserInformationType) {
+		setUserInformation(newUserData);
+	}
+
 
 	return (
 		<CartContext.Provider
 			value={{
 				products,
+				userInformation,
 				handleAddProductToCart,
 				handleRemoveProductToCart,
 				handleChangeProductItemAmount,
 				handleGetTotalPrice,
-				freight
+				handleSetUserInformation,
+				freight,
 			}}
 		>
 			{children}

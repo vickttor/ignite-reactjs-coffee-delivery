@@ -4,7 +4,6 @@ import {
 	UserInformationContainer,
 } from "./style";
 
-import {z} from "zod";
 import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useContext, useEffect } from "react";
@@ -14,28 +13,20 @@ import { UserAddress } from "./components/UserAddress";
 import { PaymentOptions } from "./components/PaymentOptions";
 import { ConfirmProducts } from "./components/ConfirmProducts";
 import { CartContext } from "../../context/Cart";
+import { UserInformationSchema, UserInformationType } from "../../entities/userInformation/schema";
+import { useNavigate } from "react-router-dom";
 
-const AddressSchema = z.object({
-	cep: z.string().min(8).max(8),
-	street: z.string().min(3).max(100),
-	number: z.number(),
-	complement: z.string().max(100).optional(),
-	district: z.string().min(3).max(100),
-	city: z.string().min(3).max(100),
-	state: z.string().min(3).max(100)
-});
-
-export type AddressType = z.infer<typeof AddressSchema>;
 
 export function Checkout(){
 
-	const {products} = useContext(CartContext);
+	const navigate = useNavigate();
+	const {products, userInformation, handleSetUserInformation} = useContext(CartContext);
 
-	const CheckoutForm = useForm<AddressType>({
+	const CheckoutForm = useForm<UserInformationType>({
 		defaultValues: {
-			cep: "",
+			...userInformation
 		},
-		resolver: zodResolver(AddressSchema)
+		resolver: zodResolver(UserInformationSchema)
 	});
 
 	const {handleSubmit, formState: {errors}} = CheckoutForm;
@@ -50,8 +41,10 @@ export function Checkout(){
 		}
 	},[errors]);
 
-	const handleAddressSubmit = async (data: AddressType) => {
-		console.log(data);
+	const handleAddressSubmit = (data: UserInformationType) => {
+		handleSetUserInformation(data);
+		
+		navigate("/success");
 	};
 	
 	return(

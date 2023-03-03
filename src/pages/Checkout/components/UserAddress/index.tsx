@@ -8,9 +8,10 @@ import {
 import { useFormContext, Controller } from "react-hook-form";
 import { MapPinLine } from "phosphor-react";
 
-import * as tokens from "../../../../styles/tokens/variables";
 import axios, { AxiosResponse } from "axios";
-import { AddressType } from "../..";
+
+import * as tokens from "../../../../styles/tokens/variables";
+import { UserInformationType } from "../../../../entities/userInformation/schema";
 
 const applyMaskIntoCepField = (rawValue: string) => {
 	const cepMask = /^(\d{5})(\d{3})$/; // Regular expression for CEP format
@@ -31,7 +32,7 @@ interface IAddressData {
 }
 
 export function UserAddress() {
-	const { register, control, watch, setValue, setFocus } = useFormContext<AddressType>();
+	const { register, control, watch, setValue, setFocus } = useFormContext<UserInformationType>();
 
 	const cepWatch = watch("cep");
 
@@ -105,7 +106,7 @@ export function UserAddress() {
 				</InputContainer>
 
 				<InputContainer>
-					<input tabIndex={1} {...register("street")} type="text" placeholder="Rua" />
+					<input {...register("street")} type="text" placeholder="Rua" />
 				</InputContainer>
 
 				<InputContainer>
