@@ -46,13 +46,13 @@ export function ConfirmProducts({products}: IConfirmProductsProps) {
 					<p>{productsNotConfirmed.length}</p>
 				</PricesSummary>
 						
-				{ productsNotConfirmed.length && 
+				{ productsNotConfirmed.length ?
 					(
 						<PricesSummary>
 							<p>Entrega</p>
 							<p>{FormatCurrecy(freight)}</p>
 						</PricesSummary>
-					)
+					) : null
 				}
 						
 				<TotalPrice>
