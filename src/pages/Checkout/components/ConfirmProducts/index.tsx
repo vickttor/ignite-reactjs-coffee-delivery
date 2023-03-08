@@ -3,9 +3,11 @@ import { ICoffeeProduct } from "../../../../@types/Product";
 import { CoffeInCart } from "../../../../components/CoffeInCart";
 import { CartContext } from "../../../../context/Cart";
 import { FormatCurrecy } from "../../../../utils/formatMoney";
+import { Clipboard } from "phosphor-react";
 import { 
 	ConfirmOrder, 
 	ConfirmProductContainer, 
+	NoItemsContainer, 
 	PricessSumaryContainer, 
 	PricesSummary, 
 	ProductsOverflow, 
@@ -16,19 +18,27 @@ interface IConfirmProductsProps {
   products: ICoffeeProduct[]
 }
 
-export function ConfirmProducts(props: IConfirmProductsProps) {
+export function ConfirmProducts({products}: IConfirmProductsProps) {
 	
-	const { products, handleGetTotalPrice, freight} = useContext(CartContext);
+	const { handleGetTotalPrice, freight} = useContext(CartContext);
+
+	const productsNotConfirmed = products.filter((product)=>!product.confirmed);
 
 	return (
 		<ConfirmProductContainer>
-			<ProductsOverflow>
-				{props.products.map((product)=>{
-					return (
-						<CoffeInCart key={product.id} product={product}/>
-					);
-				})}
-			</ProductsOverflow>
+			{productsNotConfirmed.length ? 
+				<ProductsOverflow>
+					{productsNotConfirmed.map((product)=>{
+						return (
+							<CoffeInCart key={product.id} product={product}/>
+						);
+					})}
+				</ProductsOverflow>
+				: <NoItemsContainer>
+					<Clipboard size={80} weight="duotone" />
+					<p>Sem Produtos</p>
+				</NoItemsContainer>
+			}
 
 			<PricessSumaryContainer>
 				<PricesSummary>

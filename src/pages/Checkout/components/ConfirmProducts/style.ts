@@ -75,3 +75,27 @@ export const ConfirmOrder = styled(motion.button)`
   border-radius: 6px;
   padding: .5rem .75rem;
 `;
+
+export const NoItemsContainer = styled(motion.div)`
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+  padding-bottom: 1rem;
+
+  svg {
+    color: ${({theme})=>theme.SdBaseText};
+  }
+
+  p {
+    ${({theme})=>({...theme.SdTextRegularM, lineHeight: `${theme.SdTextRegularM.lineHeight}px`})};
+    text-align: center;
+    color: ${({theme})=>theme.SdBaseText};
+  }
+
+  border-bottom: 1px solid grey
+
+`;

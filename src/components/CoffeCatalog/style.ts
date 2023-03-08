@@ -54,11 +54,11 @@ export const CoffeCardBuyContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap:1.4375rem;
+  gap:0.5rem;
   margin-top: 2.0625rem;
 
   span {
-    flex: 1;
+
     ${({theme})=>({...theme.SdTextRegularS, lineHeight: `${theme.SdTextRegularS.lineHeight}px`})};
     color: ${({theme})=>theme.SdBaseText};
     
@@ -71,7 +71,7 @@ export const CoffeCardBuyContainer = styled.div`
 `;
 
 export const AddToCartContainer = styled.div`
-  flex:1;
+
   display: flex;
   align-items: center;
   justify-content: center;

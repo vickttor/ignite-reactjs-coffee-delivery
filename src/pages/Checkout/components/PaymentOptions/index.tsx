@@ -20,7 +20,7 @@ export function PaymentOptions() {
 			</Title>
 
 			<InputOptionsContainer>
-				<input type="radio" {...register("payment")} value={Payment.CREDIT} id="credit-card" name="payment"/>
+				<input checked type="radio" {...register("payment")} value={Payment.CREDIT} id="credit-card" name="payment"/>
 				<label htmlFor="credit-card">
 					<CreditCard size={16} color={tokens.SdBrandPurple} />
           Cartão de Crédito

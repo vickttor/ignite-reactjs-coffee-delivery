@@ -2,7 +2,7 @@
 import { createContext, ReactNode, useEffect, useReducer, useState } from "react";
 import { ICoffeeProduct } from "../@types/Product";
 import { UserInformationType, Payment } from "../entities/userInformation/schema";
-import { addNewProductToCart, removeProductFromCart, changeProductAmount } from "../reducers/cart/actions";
+import { addNewProductToCart, removeProductFromCart, changeProductAmount, confirmPurchase } from "../reducers/cart/actions";
 import { CartReducer, IProductsInCart } from "../reducers/cart/reducer";
 
 interface ICartContext {
@@ -13,6 +13,7 @@ interface ICartContext {
 	handleChangeProductItemAmount: (productID: string, number: number) => void;
 	handleGetTotalPrice: () => number;
 	handleSetUserInformation: (newUserData: UserInformationType) => void;
+	handleConfirmPurchase: () => void;
 	freight: number;
 }
 
@@ -33,25 +34,28 @@ export function CartContextProvider({ children }: ICartContextProviderProps) {
     }
 	);
 
-	const [userInformation, setUserInformation] = useState({
-		cep: "",
-		city: "", 
-		complement: "", 
-		district: "", 
-		number: 0, 
-		state: "", 
-		street: "",
-		payment: Payment.CREDIT
-	} as UserInformationType);
+	const [userInformation, setUserInformation] = useState(
+		JSON.parse(localStorage.getItem("@coffee-shop:user-information-state-1.0.0") as string) ?? {
+			cep: "",
+			city: "", 
+			complement: "", 
+			district: "", 
+			number: 0, 
+			state: "", 
+			street: "",
+			payment: Payment.CREDIT
+		} as UserInformationType);
 
 	const freight = 3.30;
 
 	const { products } = cartState;
 
 	useEffect(() => {
-		const stateJSON = JSON.stringify(cartState);
+		const cartStateJSON = JSON.stringify(cartState);
+		const userInformationJSON = JSON.stringify(userInformation);
 
-		localStorage.setItem("@ignite-timer:products-state-1.0.0", stateJSON);
+		localStorage.setItem("@coffee-shop:products-state-1.0.1", cartStateJSON);
+		localStorage.setItem("@coffee-shop:user-information-state-1.0.0", userInformationJSON);
 	}, [cartState]);
 
 	function handleAddProductToCart(product: ICoffeeProduct) {
@@ -72,10 +76,13 @@ export function CartContextProvider({ children }: ICartContextProviderProps) {
 		}
 	}
 
+	function handleConfirmPurchase(){
+		dispatch(confirmPurchase());
+	}
+
 	function handleSetUserInformation(newUserData: UserInformationType) {
 		setUserInformation(newUserData);
 	}
-
 
 	return (
 		<CartContext.Provider
@@ -87,6 +94,7 @@ export function CartContextProvider({ children }: ICartContextProviderProps) {
 				handleChangeProductItemAmount,
 				handleGetTotalPrice,
 				handleSetUserInformation,
+				handleConfirmPurchase,
 				freight,
 			}}
 		>

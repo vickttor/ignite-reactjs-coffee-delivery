@@ -7,12 +7,12 @@ export enum Payment {
 }
 
 export const UserInformationSchema = z.object({
-	cep: z.string().min(8).max(9),
-	street: z.string().min(3).max(100),
+	cep: z.string().min(8).max(9).optional(),
+	street: z.string().min(1).max(100),
 	number: z.number(),
 	complement: z.string().max(100).optional(),
-	district: z.string().min(3).max(100),
-	city: z.string().min(3).max(100),
+	district: z.string().min(1).max(100),
+	city: z.string().min(1).max(100),
 	state: z.string().min(2).max(2),
 	payment: z.nativeEnum(Payment)
 });

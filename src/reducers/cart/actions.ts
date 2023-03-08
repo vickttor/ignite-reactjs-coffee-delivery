@@ -4,6 +4,7 @@ export enum CartActionTypes {
   ADD_PRODUCT_TO_CART  = "ADD_PRODUCT_TO_CART",
   REMOVE_PRODUCT_TO_CART = "REMOVE_PRODUCT_TO_CART",
   CHANGE_PRODUCT_ITEM_AMOUNT = "CHANGE_PRODUCT_ITEM_AMOUNT",
+	CONFIRM_PURCHASE = "CONFIRM_PURCHASE"
 }
 
 export function addNewProductToCart(product: ICoffeeProduct) {
@@ -31,5 +32,11 @@ export function changeProductAmount(productID: string, amount: number) {
 			productID,
 			amount
 		}
+	};
+}
+
+export function confirmPurchase() {
+	return {
+		type: CartActionTypes.CONFIRM_PURCHASE
 	};
 }

@@ -7,7 +7,7 @@ export function Cart() {
 
 	const {products, userInformation} = useContext(CartContext);
 
-	const productsAmount = products.length;
+	const productsAmount = products.filter((product)=>!product.confirmed).length;
 
 	const addressSummary = `${userInformation.city}, ${userInformation.state}`;
 

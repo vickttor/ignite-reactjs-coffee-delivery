@@ -6,6 +6,7 @@ export interface ICoffeeProduct {
   description: string;
   price: number;
   amount: number;
+  confirmed: boolean
 }
 
 export type ICoffeesFromApi = Omit<ICoffeeProduct, "amount">

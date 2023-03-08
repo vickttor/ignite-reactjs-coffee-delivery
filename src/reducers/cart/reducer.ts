@@ -23,7 +23,7 @@ export const CartReducer: Reducer<IProductsInCart, any> = (state, action) => {
 				draft.products.push(product);
 			});
 		}
-   
+		
 		return produce(state, (draft)=> {
 			draft.products[existingProductIndex].amount += productAmount;
 		});
@@ -41,6 +41,15 @@ export const CartReducer: Reducer<IProductsInCart, any> = (state, action) => {
 
 		return produce(state, (draft)=> {
 			draft.products[existingProductIndex].amount = action.payload.amount;
+		});
+	}
+
+	case CartActionTypes.CONFIRM_PURCHASE: {
+		return produce(state, (draft)=> {
+			draft.products = draft.products.map((product)=> {
+				product.confirmed = true;
+				return product;
+			});
 		});
 	}
 

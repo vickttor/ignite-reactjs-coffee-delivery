@@ -5,50 +5,45 @@ import {
 } from "./style";
 
 import { useForm, FormProvider } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useContext, useEffect } from "react";
-import { toast } from "react-toastify";
-
+import { useContext } from "react";
 import { UserAddress } from "./components/UserAddress";
 import { PaymentOptions } from "./components/PaymentOptions";
 import { ConfirmProducts } from "./components/ConfirmProducts";
 import { CartContext } from "../../context/Cart";
-import { UserInformationSchema, UserInformationType } from "../../entities/userInformation/schema";
+import { Payment, UserInformationSchema, UserInformationType } from "../../entities/userInformation/schema";
 import { useNavigate } from "react-router-dom";
-
+import { handleError } from "../../utils/handleError";
 
 export function Checkout(){
 
 	const navigate = useNavigate();
-	const {products, userInformation, handleSetUserInformation} = useContext(CartContext);
+	const {products, userInformation, handleSetUserInformation , handleConfirmPurchase} = useContext(CartContext);
 
 	const CheckoutForm = useForm<UserInformationType>({
 		defaultValues: {
-			...userInformation
+			...userInformation, 
+			payment: Payment.CREDIT
 		},
-		resolver: zodResolver(UserInformationSchema)
 	});
 
-	const {handleSubmit, formState: {errors}} = CheckoutForm;
+	const {handleSubmit } = CheckoutForm;
 
-	useEffect(()=> {
-		const keyErrors = Object.keys(errors);
+	const handleUserInformationSubmit = (data: UserInformationType) => {
 
-		if(keyErrors.length > 0) {
-			keyErrors.forEach((key)=> {
-				toast.error(errors?.[key as keyof typeof errors]?.message);
-			});
+		try {
+			UserInformationSchema.parse(data);
+
+			handleSetUserInformation(data);
+			handleConfirmPurchase();
+			navigate("/success");
+
+		} catch(err) {
+			handleError(err);
 		}
-	},[errors]);
-
-	const handleAddressSubmit = (data: UserInformationType) => {
-		handleSetUserInformation(data);
-		
-		navigate("/success");
 	};
 	
 	return(
-		<CheckoutContainer onSubmit={handleSubmit(handleAddressSubmit)}>
+		<CheckoutContainer onSubmit={handleSubmit(handleUserInformationSubmit)}>
 			<UserInformationContainer>
 				<h2>Complete seu pedido</h2>
 

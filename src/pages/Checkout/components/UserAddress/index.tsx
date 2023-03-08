@@ -83,18 +83,21 @@ export function UserAddress() {
 
 									if(rawCep.length > 8) return;
 
-									if(cepWatch.length === 9 && rawCep.length < 8) {
+									if(cepWatch?.length === 9 && rawCep.length < 8) {
 										setFields({
 											bairro: "",
 											localidade: "",
 											logradouro: "",
-											uf: ""
+											uf: "",
 										});
+										setValue("number", 0);
+										setValue("complement","");
+
 									}
 
 									const inputWithMask = applyMaskIntoCepField(rawCep);
 									
-									if (rawCep.length === 8 && rawCep !== cepWatch.replace("-", "")) fetchAddressData(rawCep);
+									if (rawCep.length === 8 && rawCep !== cepWatch?.replace("-", "")) fetchAddressData(rawCep);
 
 									onChange(inputWithMask);
 								}}
@@ -106,15 +109,17 @@ export function UserAddress() {
 				</InputContainer>
 
 				<InputContainer>
-					<input {...register("street")} type="text" placeholder="Rua" />
+					<input {...register("street")} type="text" placeholder="Rua" required/>
 				</InputContainer>
 
 				<InputContainer>
 					<input
 						style={{ maxWidth: "min(200px, 100%)" }}
 						{...register("number", { valueAsNumber: true })}
+						min={1}
 						type="number"
 						placeholder="Número"
+						required
 					/>
 					<input
 						id="complement"
@@ -130,18 +135,21 @@ export function UserAddress() {
 						{...register("district")}
 						type="text"
 						placeholder="Bairro"
+						required
 					/>
 					<input
 						style={{ maxWidth: "min(276px, 100%)" }}
 						{...register("city")}
 						type="text"
 						placeholder="Cidade"
+						required
 					/>
 					<input
 						style={{ maxWidth: "min(60px, 100%)" }}
 						{...register("state")}
 						type="text"
 						placeholder="UF"
+						required
 					/>
 				</InputContainer>
 			</AddressInputs>
