@@ -11,7 +11,7 @@ interface ICartContext {
 	handleAddProductToCart: (product: ICoffeeProduct) => void;
 	handleRemoveProductToCart: (productID: string) => void;
 	handleChangeProductItemAmount: (productID: string, number: number) => void;
-	handleGetTotalPrice: () => number;
+	handleGetTotalPrice: (products: ICoffeeProduct[]) => number;
 	handleSetUserInformation: (newUserData: UserInformationType) => void;
 	handleConfirmPurchase: () => void;
 	freight: number;
@@ -62,7 +62,7 @@ export function CartContextProvider({ children }: ICartContextProviderProps) {
 		dispatch(addNewProductToCart(product));
 	}
 
-	function handleGetTotalPrice() {
+	function handleGetTotalPrice(products: ICoffeeProduct[]) {
 		return products.reduce((acc, att) => acc + (att.price * att.amount) + freight, 0);
 	}
 	

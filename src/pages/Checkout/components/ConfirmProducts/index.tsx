@@ -43,17 +43,21 @@ export function ConfirmProducts({products}: IConfirmProductsProps) {
 			<PricessSumaryContainer>
 				<PricesSummary>
 					<p>Total de itens</p>
-					<p>{products.length}</p>
+					<p>{productsNotConfirmed.length}</p>
 				</PricesSummary>
 						
-				<PricesSummary>
-					<p>Entrega</p>
-					<p>{FormatCurrecy(freight)}</p>
-				</PricesSummary>
+				{ productsNotConfirmed.length && 
+					(
+						<PricesSummary>
+							<p>Entrega</p>
+							<p>{FormatCurrecy(freight)}</p>
+						</PricesSummary>
+					)
+				}
 						
 				<TotalPrice>
 					<p>Total</p>
-					<p>{FormatCurrecy(handleGetTotalPrice())}</p>
+					<p>{FormatCurrecy(handleGetTotalPrice(productsNotConfirmed))}</p>
 				</TotalPrice>
 			</PricessSumaryContainer>
 
