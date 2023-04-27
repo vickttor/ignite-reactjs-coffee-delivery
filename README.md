@@ -8,7 +8,7 @@ Finished 🚀
 
 ## Preview
 
-![Home Page](./.github/coffe-home.png)
+![Home Page](./.github/coffee-home.png)
 ![Checkout Page](./.github/coffee-checkout.png)
 ![Success Page](./.github/coffee-success.png)
 
@@ -30,4 +30,9 @@ Finished 🚀
 
 ## Contributors
 
-<img src="https://contrib.rocks/image?repo=victorhsdev/coffee-delivery"/>
+## Author
+
+<img src="https://github.com/victorhsdev.com" alt="Victor Silva" style="border-radius: 50%">
+
+<span>Victor Silva</span>
+
