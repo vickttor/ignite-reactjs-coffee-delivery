@@ -32,7 +32,7 @@ Finished 🚀
 
 ## Author
 
-<img src="https://github.com/victorhsdev.com" alt="Victor Silva" style="border-radius: 50%">
+<img src="https://github.com/victorhsdev.png" alt="Victor Silva" style="border-radius: 50%">
 
 <span>Victor Silva</span>
 
