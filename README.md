@@ -1,4 +1,4 @@
-# Githublog
+# Coffee Delivery
 
 Coffee E-commerce built with ReactJS using Vite and npm. This project for personal studies and to accomplish the Rocketseat Ignite Challenge. Here you'll find features like CEP Automation, Animations and Micro Interations besides the fast and responsive web pages.
 
