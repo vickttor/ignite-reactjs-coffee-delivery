@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "start": "npm run preview -- --host",
+    "start": "npx run preview -- --host",
     "preview": "vite preview",
     "lint": "eslint src --ext .ts,.tsx",
     "build-tokens": "style-dictionary build"
