@@ -22,8 +22,14 @@ FROM nginx:alpine
 # Copy the build output to the Nginx html directory
 COPY --from=build /usr/app/dist /usr/share/nginx/html
 
+# Add S2I scripts
+COPY .s2i/bin/ /usr/libexec/s2i/
+
+# Set permissions for S2I scripts
+RUN chmod +x /usr/libexec/s2i/assemble /usr/libexec/s2i/run
+
 # Expose port 8080
-EXPOSE 8080
+EXPOSE 80
 
 # Start Nginx server
 CMD ["nginx", "-g", "daemon off;"]

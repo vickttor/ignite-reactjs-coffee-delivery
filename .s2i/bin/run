@@ -1,0 +1,5 @@
+#!/bin/bash
+set -e
+
+# Start Nginx to serve the application
+exec nginx -g 'daemon off;'
