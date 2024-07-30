@@ -36,6 +36,3 @@ RUN chmod +x /usr/libexec/s2i/assemble /usr/libexec/s2i/run
 
 # Expose port 8080
 EXPOSE 8080
-
-# Start Nginx server
-CMD ["nginx", "-g", "daemon off;"]
