@@ -34,5 +34,7 @@ COPY .s2i/bin/ /usr/libexec/s2i/
 # Set permissions for S2I scripts
 RUN chmod +x /usr/libexec/s2i/assemble /usr/libexec/s2i/run
 
+USER 1001
+
 # Expose port 8080
 EXPOSE 8080
