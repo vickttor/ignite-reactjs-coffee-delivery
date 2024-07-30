@@ -1,13 +1,29 @@
-FROM node:20.11.1
+# Use an official Node.js runtime as a parent image
+FROM node:hydrogen AS build
 
-WORKDIR /usr/www/app
+# Set the working directory
+WORKDIR /usr/app
 
-COPY . .
+# Copy package.json and package-lock.json
+COPY package*.json ./
 
+# Install dependencies
 RUN npm install
 
-EXPOSE 4173
+# Copy the rest of the application code
+COPY . .
 
+# Build the application
 RUN npm run build
 
-CMD ["npm", "run", "preview", "--", "--host"]
+# Use a lightweight web server to serve the application
+FROM nginx:alpine
+
+# Copy the build output to the Nginx html directory
+COPY --from=build /usr/app/dist /usr/share/nginx/html
+
+# Expose port 8080
+EXPOSE 8080
+
+# Start Nginx server
+CMD ["nginx", "-g", "daemon off;"]
