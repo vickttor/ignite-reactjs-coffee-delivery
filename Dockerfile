@@ -25,8 +25,8 @@ COPY --from=build /usr/app/dist /usr/share/nginx/html
 # Copy the custom Nginx configuration file
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-RUN chgrp -R 0 /usr/share/nginx/html /etc/nginx/nginx.conf && \
-    chmod -R g=u /usr/share/nginx/html /etc/nginx/nginx.conf
+RUN chgrp -R 0 /usr/share/nginx/html /etc/nginx/nginx.conf /var/cache/nginx && \
+    chmod -R g=u /usr/share/nginx/html /etc/nginx/nginx.conf /var/cache/nginx
 
 # Add S2I scripts
 COPY .s2i/bin/ /usr/libexec/s2i/
